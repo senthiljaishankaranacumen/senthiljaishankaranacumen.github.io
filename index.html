@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Upload Application</title>
+    <style>
+        /* Add your CSS styling here */
+    </style>
+</head>
+<body>
+    <button id="uploadButton">Upload Photo</button>
+
+    <div id="uploadModal" style="display:none;">
+        <div id="dragDropArea">
+            <p>Drag and drop your files here</p>
+            <input type="file" id="fileInput" multiple>
+        </div>
+        <div id="socialMediaButtons">
+            <button onclick="uploadFromLocal()">Local Storage</button>
+            <button onclick="uploadFromFacebook()">Facebook</button>
+            <button onclick="uploadFromInstagram()">Instagram</button>
+            <button onclick="uploadFromGoogleDrive()">Google Drive</button>
+            <button onclick="uploadFromDropbox()">Dropbox</button>
+            <button onclick="uploadFromOneDrive()">OneDrive</button>
+            <button onclick="uploadFromGooglePhotos()">Google Photos</button>
+            <button onclick="uploadFromBox()">Box</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('uploadButton').addEventListener('click', function() {
+            document.getElementById('uploadModal').style.display = 'block';
+        });
+
+        // JavaScript for drag and drop functionality
+        const dragDropArea = document.getElementById('dragDropArea');
+        dragDropArea.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            dragDropArea.classList.add('dragging');
+        });
+
+        dragDropArea.addEventListener('dragleave', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            dragDropArea.classList.remove('dragging');
+        });
+
+        dragDropArea.addEventListener('drop', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            dragDropArea.classList.remove('dragging');
+            const files = event.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        function handleFiles(files) {
+            for (let i = 0; i < files.length; i++) {
+                console.log(files[i]); // Handle the files
+            }
+        }
+
+        // Placeholder functions for social media upload buttons
+        function uploadFromLocal() {
+            document.getElementById('fileInput').click();
+        }
+
+        function uploadFromFacebook() {
+            // Implement OAuth and upload logic for Facebook
+        }
+
+        function uploadFromInstagram() {
+            // Implement OAuth and upload logic for Instagram
+        }
+
+        function uploadFromGoogleDrive() {
+            // Implement OAuth and upload logic for Google Drive
+        }
+
+        function uploadFromDropbox() {
+            // Implement OAuth and upload logic for Dropbox
+        }
+
+        function uploadFromOneDrive() {
+            // Implement OAuth and upload logic for OneDrive
+        }
+
+        function uploadFromGooglePhotos() {
+            // Implement OAuth and upload logic for Google Photos
+        }
+
+        function uploadFromBox() {
+            // Implement OAuth and upload logic for Box
+        }
+    </script>
+</body>
+</html>
